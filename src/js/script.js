@@ -61,19 +61,45 @@
       console.log('new Product:', thisProduct);
     }
 
-/* generate HTML based on template */
-/* create element using utils.createElementFromHTML */
-/* find menu container */
-/* add element to menu */
+    /* generate HTML based on template */
+    /* create element using utils.createElementFromHTML */
+    /* find menu container */
+    /* add element to menu */
 
-  renderInMenu(){
+    renderInMenu(){
       const thisProduct = this;
       const generatedHTML = templates.menuProduct(thisProduct.data);
       thisProduct.element = utils.createDOMFromHTML(generatedHTML);
       const menuContainer =  document.querySelector(select.containerOf.menu);
       menuContainer.appendChild(thisProduct.element);
     }
-  }
+
+    /* find the clickable trigger (the element that should react to clicking) */
+    /* START: add event listener to clickable trigger on event click */
+    /* prevent default action for event */
+    /* find active product (product that has active class) */
+    /* if there is active product and it's not thisProduct.element, remove class active from it */
+    /* toggle active class on thisProduct.element */
+
+    initAccordion(){
+      const thisProduct = this;
+      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      console.log(clickableTrigger);
+      clickableTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+        const activeProduct = document.querySelector(select.all.menuProductsActive);
+        console.log(activeProduct);
+        console.log(thisProduct.element);
+        console.log(activeProduct);
+
+        if(activeProduct != null && activeProduct != thisProduct.element){
+          activeProduct.classList.remove(classNames.menuProduct.wrapperActive);
+        }
+
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
+      });
+    }
+  } // brace for class product
   const app = {
     initData: function(){
       const thisApp = this;
