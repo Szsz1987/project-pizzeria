@@ -1,21 +1,24 @@
 /* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
-
 {
   'use strict';
 
   const select = {
+
     templateOf: {
       menuProduct: '#template-menu-product',
     },
+
     containerOf: {
       menu: '#product-list',
       cart: '#cart',
     },
+
     all: {
       menuProducts: '#product-list > .product',
       menuProductsActive: '#product-list > .product.active',
       formInputs: 'input, select',
     },
+
     menuProduct: {
       clickable: '.product__header',
       form: '.product__order',
@@ -24,6 +27,7 @@
       amountWidget: '.widget-amount',
       cartButton: '[href="#add-to-cart"]',
     },
+
     widgets: {
       amount: {
         input: 'input[name="amount"]',
@@ -31,7 +35,7 @@
         linkIncrease: 'a[href="#more"]',
       },
     },
-  };
+  }; // const select = {}
 
   const classNames = {
     menuProduct: {
@@ -51,6 +55,7 @@
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   };
+
   class Product {
     constructor(id, data){
       const thisProduct = this;
@@ -84,10 +89,10 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
 
-    /* find the clickable trigger (the element that should react to clicking) */
-    /* START: add event listener to clickable trigger on event click */
+    /* START: add event listener to accordionTrigger on event click */
     /* prevent default action for event */
     /* find active product (product that has active class) */
     /* if there is active product and it's not thisProduct.element, remove class active from it */
@@ -137,34 +142,43 @@
     processOrder(){
       const thisProduct = this;
       const formData = utils.serializeFormToObject(thisProduct.form);
-      console.log('formData', formData);
       let price = thisProduct.data.price;
-      console.log(thisProduct.data.price);
 
       for(let paramId in thisProduct.data.params){
         const param = thisProduct.data.params[paramId];
-        console.log(paramId, param);
 
         for(let optionId in param.options) {
           const option = param.options[optionId];
-          console.log(optionId, option);
 
           const firstCheck = formData.hasOwnProperty(paramId);
-          console.log(firstCheck);
-          console.log(formData[paramId].includes(optionId));
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
 
-          if(firstCheck == true && formData[paramId].includes(optionId)){
+          if(optionSelected){
             if(!option.default == true){
-              price += option.price;
+              price += option.price; // add price
             }
-          } else if(option.default == true){
-            price -= option.price;
+            } else if(option.default == true){ // check if the option is default
+              price -= option.price; // reduce price
+            }
+
+      // find image with class .paramId-optionId
+      // check if that image exists at all
+      // check if a given image is already selected
+      // if yes, give class 'active'
+      // if no, remove class 'active'
+
+        const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          if(optionImage != null){
+            if(optionSelected){
+             optionImage.classList.add(classNames.menuProduct.imageVisible);
+            } else {
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
           }
         }
       }
       thisProduct.priceElem.innerHTML = price;
     }
-
   } // brace for class product
 
   const app = {
