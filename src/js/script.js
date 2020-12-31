@@ -151,26 +151,26 @@
           const option = param.options[optionId];
 
           const firstCheck = formData.hasOwnProperty(paramId);
-          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+          const optionSelected = firstCheck == true && formData[paramId].includes(optionId);
 
           if(optionSelected){
             if(!option.default == true){
               price += option.price; // add price
             }
-            } else if(option.default == true){ // check if the option is default
-              price -= option.price; // reduce price
-            }
+          } else if(option.default == true){ // check if the option is default
+            price -= option.price; // reduce price
+          }
 
-      // find image with class .paramId-optionId
-      // check if that image exists at all
-      // check if a given image is already selected
-      // if yes, give class 'active'
-      // if no, remove class 'active'
+          // find image with class .paramId-optionId
+          // check if that image exists at all
+          // check if a given image is already selected
+          // if yes, give class 'active'
+          // if no, remove class 'active'
 
-        const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
           if(optionImage != null){
             if(optionSelected){
-             optionImage.classList.add(classNames.menuProduct.imageVisible);
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
             } else {
               optionImage.classList.remove(classNames.menuProduct.imageVisible);
             }
