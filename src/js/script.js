@@ -65,8 +65,18 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
-      console.log('new Product:', thisProduct);
+      //console.log('new Product:', thisProduct);
+    }
+
+    initAmountWidget(){
+
+      const thisProduct = this;
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem); // here will be new instance saved in product (from AmountWidget)
+      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+        thisProduct.processOrder();
+      });
     }
 
     /* generate HTML based on template */
@@ -90,6 +100,7 @@
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
 
     /* START: add event listener to accordionTrigger on event click */
@@ -150,8 +161,7 @@
         for(let optionId in param.options) {
           const option = param.options[optionId];
 
-          const firstCheck = formData.hasOwnProperty(paramId);
-          const optionSelected = firstCheck == true && formData[paramId].includes(optionId);
+          const optionSelected = formData.hasOwnProperty(paramId) == true && formData[paramId].includes(optionId);
 
           if(optionSelected){
             if(!option.default == true){
@@ -177,9 +187,63 @@
           }
         }
       }
+      price *= thisProduct.amountWidget.value; // multiply pice by amount
       thisProduct.priceElem.innerHTML = price;
     }
   } // brace for class product
+
+  class AmountWidget {
+    constructor(element){ // element is reference to DOM, like thisProduct.amountWidgetElem
+
+      const thisWidget = this;
+      thisWidget.getElements(element);
+      thisWidget.setValue(settings.amountWidget.defaultValue);
+      thisWidget.initActions();
+    }
+
+    getElements(element){
+      const thisWidget = this;
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    }
+
+    setValue(value){
+      const thisWidget = this;
+      const newValue = parseInt(value);
+      // check that new value is not default, is not text and is between 1 and 10
+      if(thisWidget.value !== newValue && isNaN(newValue) == false && newValue <= 10 && newValue >= 0){
+        thisWidget.value = newValue;
+      }
+      thisWidget.input.value = thisWidget.value;
+      thisWidget.announce();
+    }
+
+    initActions(){
+      const thisWidget = this;
+      thisWidget.input.addEventListener('change', function(){
+        thisWidget.setValue(thisWidget.input.value);
+      });
+
+      thisWidget.linkDecrease.addEventListener('click', function(event){
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value-1);
+      });
+
+      thisWidget.linkIncrease.addEventListener('click', function(event){
+        event.preventDefault();
+        thisWidget.setValue(thisWidget.value+1);
+      });
+    }
+
+    announce(){
+      const thisWidget = this;
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
+    }
+  } // class AmountWidget {}
+
 
   const app = {
     initData: function(){
@@ -195,11 +259,11 @@
     },
     init: function(){
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
+      //console.log('*** App starting ***');
+      //console.log('thisApp:', thisApp);
+      //console.log('classNames:', classNames);
+      //console.log('settings:', settings);
+      //console.log('templates:', templates);
       thisApp.initData();
       thisApp.initMenu();
     },
