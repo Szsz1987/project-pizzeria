@@ -25,9 +25,7 @@
 }
 
 .booking-option-title {
-  font-size: 14px;
-  font-weight: $font-bold;
-  text-transform: uppercase;
+  @extend .h2;
   display: block;
   margin: 0 0 ($base-size * 2) 0;
 
@@ -38,10 +36,7 @@
 }
 
 .page__title {
-  font-family: $font-header;
-  font-size: 26px;
-  font-weight: $font-semibold;
-  text-transform: uppercase;
+  @extend .h1;
   margin: 0 0 ($base-size * 4) 0;
   text-align: center;
 }
@@ -118,9 +113,7 @@
   }
 
   .object {
-    font-size: 12px;
-    font-weight: $font-bold;
-    text-transform: uppercase;
+    @extend .h3;
     background: #f7f1e3;
     box-shadow: 0 0 12px rgba(0,0,0,0.2);
   }
@@ -147,9 +140,7 @@
   }
 
   .table {
-    font-size: 14px;
-    font-weight: $font-bold;
-    text-transform: uppercase;
+    @extend .h2;
     width: 70px;
     height: 70px;
     line-height: 70px;
