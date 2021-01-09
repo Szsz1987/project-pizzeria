@@ -27,7 +27,6 @@ class Cart{ // basket
 
   initActions(){
     const thisCart = this;
-
     thisCart.dom.toggleTrigger.addEventListener('click', function(event){
       event.preventDefault();
       thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);

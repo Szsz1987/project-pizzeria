@@ -1,3 +1,4 @@
+//import {settings} from '../settings.js';
 
 class BaseWidget{
   constructor(wrapperElement, initialValue){
@@ -15,8 +16,7 @@ class BaseWidget{
   set value(value){
     const thisWidget = this;
     const newValue = thisWidget.parseValue(value);
-
-    if( // check if the newValue is different from the one already written
+    if(
       thisWidget.correctValue !== newValue &&
        thisWidget.isValid(newValue)
     ){
@@ -49,7 +49,6 @@ class BaseWidget{
     const event = new CustomEvent('updated', {
       bubbles: true
     });
-
     thisWidget.dom.wrapper.dispatchEvent(event);
   }
 }
