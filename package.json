@@ -30,10 +30,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "jquery": "^3.5.1",
         "json-server": "^0.16.3",
-        "range-slider-element": "^1.0.0",
-        "rangeslider.js": "^2.3.3"
+        "rangeslider-pure": "^0.4.11"
     },
     "devDependencies": {
         "autoprefixer-cli": "^1.0.0",

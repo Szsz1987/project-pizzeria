@@ -1,5 +1,4 @@
-/* global Handlebars*/
-
+/* global Handlebars */
 export const select = {
 
   templateOf: {
@@ -36,17 +35,15 @@ export const select = {
       linkDecrease: 'a[href="#less"]',
       linkIncrease: 'a[href="#more"]',
     },
-  },
-
-  datePicker: {
-    wrapper: '.date-picker',
-    input: `input[name="date"]`,
-  },
-
-  hourPicker: {
-    wrapper: '.hour-picker',
-    input: 'input[type="range"]',
-    output: '.output',
+    datePicker: {
+      wrapper: '.date-picker',
+      input: `input[name="date"]`,
+    },
+    hourPicker: {
+      wrapper: '.hour-picker',
+      input: 'input[type="range"]',
+      output: '.output',
+    },
   },
 
   cart: {
@@ -73,6 +70,11 @@ export const select = {
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',
+    tablesFloor: '.floor-plan',
+    phone: '[name="phone"]',
+    address: '[name="address"]',
+    orderButton: '.btn-secondary',
+    starters: '.starters',
   },
 
   nav: {
@@ -92,8 +94,10 @@ export const classNames = {
   },
 
   booking: {
+    table: 'table',
     loading: 'loading',
     tableBooked: 'booked',
+    tableChosen: 'chosen',
   },
 
   nav: {
@@ -103,7 +107,6 @@ export const classNames = {
   pages: {
     active: 'active',
   },
-
 };
 
 export const settings = {
