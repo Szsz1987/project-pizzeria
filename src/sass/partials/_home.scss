@@ -12,11 +12,8 @@
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    width: 700px;
     text-align: center;
-
-    p{
-      display: none;
-    }
 
     h2{
       padding: 40px 0;
@@ -27,54 +24,27 @@
   .order-online {
     background-image: url(../../images/homepage/pizza-1.jpg);
     background-size: cover;
-    height: 160px;
-    width: 295px;
+    height: 180px;
+    width: 345px;
     border-radius: 4%;
     color: white;
     cursor: pointer;
-  }
-
-  .order-online:hover > h2 {
-    margin-top: -10px;
-    transition-timing-function: ease-in;
-    transition-property: margin-top;
-    transition-duration: 0.25s;
-  }
-
-  .order-online:hover > p {
-    display: block;
-    margin-top: -50px;
-    font-size: 15px;
-    font-weight: 600;
   }
 
   .book-a-table {
     background-image: url(../../images/homepage/pizza-2.jpg);
     background-size: cover;
-    width: 295px;
-    height: 160px;
+    width: 345px;
+    height: 180px;
     border-radius: 4%;
     color: white;
     cursor: pointer;
   }
 
-  .book-a-table:hover > p {
-    display: block;
-    margin-top: -50px;
-    font-size: 15px;
-    font-weight: 600;
-  }
-
-  .book-a-table:hover > h2 {
-    margin-top: -10px;
-    transition-timing-function: ease-in;
-    transition-property: margin-top;
-    transition-duration: 0.25s;
-  }
-
   .banner {
     height: 180px;
     border-radius: 4%;
+    width: 700px;
     margin-top: 10px;
     background-color: rgb(202, 69, 69);
     text-align: center;
@@ -94,23 +64,22 @@
   .carousel-main {
     height: 220px;
     margin-top: 80px;
+    width: 700px;
 
     .carousel-item {
       display: flex;
     }
 
     .carousel-description {
-      width: 385px;
+      flex: 50%;
       margin: auto;
-      height: 180px;
     }
 
     .carousel-picture {
-      width: 200px;
+      width: 300px;
       margin-right: 20px;
       object-fit: cover;
       border-radius: 5%;
-      height: 180px;
     }
 
     h4 {
@@ -127,6 +96,7 @@
 
   .gallery {
     margin-top: 110px;
+    width: 700px;
 
     .gallery-row {
       display: flex;
@@ -136,29 +106,8 @@
 
     .box {
       height: 180px;
-      width: 190px;
+      width: 220px;
       border-radius: 5%;
-      text-align: center;
-
-      i {
-        color: white;
-        font-size: 40px;
-        margin: 70px 0;
-        cursor: pointer;
-        display: none;
-      }
-    }
-
-    .box:hover > i {
-      display: inline-block;
-
-      transition-timing-function: ease-in;
-      transition-property: display;
-      transition-duration: 0.25s;
-    }
-
-    i:hover {
-      color: rgb(202, 69, 69);
     }
 
     .g1 {
