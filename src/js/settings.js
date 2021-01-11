@@ -26,12 +26,10 @@ export const select = {
     amountWidget: '.widget-amount',
     cartButton: '[href="#add-to-cart"]',
   },
-
   home: {
     orderButton: '.order-online',
     bookButton: '.book-a-table',
   },
-
   widgets: {
     amount: {
       input: 'input.amount',
