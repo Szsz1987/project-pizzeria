@@ -11,7 +11,6 @@ class HourPicker extends BaseWidget{
     thisWidget.initPlugin();
     thisWidget.value = thisWidget.dom.input.value;
   }
-
   initPlugin(){
     const thisWidget = this;
     // eslint-disable-next-line no-undef
@@ -20,19 +19,15 @@ class HourPicker extends BaseWidget{
       thisWidget.value = thisWidget.dom.input.value;
     });
   }
-
   parseValue(value){
     return utils.numberToHour(value);
   }
-
   isValid(){
     return true;
   }
-
   renderValue(){
     const thisWidget = this;
     thisWidget.dom.output.innerHTML = thisWidget.value;
   }
 }
-
 export default HourPicker;

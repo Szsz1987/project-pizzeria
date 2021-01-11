@@ -5,89 +5,102 @@
   border-bottom: 1px solid lighten($color-dark, 70%);
   border-radius: $radius;
 }
-
 .home {
   .options {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    width: 700px;
     text-align: center;
-
+    p{
+      display: none;
+    }
     h2{
       padding: 40px 0;
       font-size: 30px;
     }
   }
-
   .order-online {
     background-image: url(../../images/homepage/pizza-1.jpg);
     background-size: cover;
-    height: 180px;
-    width: 345px;
+    height: 160px;
+    width: 295px;
     border-radius: 4%;
     color: white;
     cursor: pointer;
   }
-
+  .order-online:hover > h2 {
+    margin-top: -10px;
+    transition-timing-function: ease-in;
+    transition-property: margin-top;
+    transition-duration: 0.25s;
+  }
+  .order-online:hover > p {
+    display: block;
+    margin-top: -50px;
+    font-size: 15px;
+    font-weight: 600;
+  }
   .book-a-table {
     background-image: url(../../images/homepage/pizza-2.jpg);
     background-size: cover;
-    width: 345px;
-    height: 180px;
+    width: 295px;
+    height: 160px;
     border-radius: 4%;
     color: white;
     cursor: pointer;
   }
-
+  .book-a-table:hover > p {
+    display: block;
+    margin-top: -50px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .book-a-table:hover > h2 {
+    margin-top: -10px;
+    transition-timing-function: ease-in;
+    transition-property: margin-top;
+    transition-duration: 0.25s;
+  }
   .banner {
     height: 180px;
     border-radius: 4%;
-    width: 700px;
     margin-top: 10px;
     background-color: rgb(202, 69, 69);
     text-align: center;
     color: white;
     padding: 15px 0;
-
     h2{
       font-size: 30px;
     }
-
     h4{
       font-size: 18px;
       padding: 0;
     }
   }
-
   .carousel-main {
     height: 220px;
     margin-top: 80px;
-    width: 700px;
-
     .carousel-item {
       display: flex;
     }
-
     .carousel-description {
-      flex: 50%;
+      width: 385px;
       margin: auto;
+      height: 180px;
     }
-
     .carousel-picture {
-      width: 300px;
+      width: 200px;
       margin-right: 20px;
       object-fit: cover;
       border-radius: 5%;
+      height: 180px;
     }
-
     h4 {
       font-weight: bold;
       text-transform: uppercase;
       font-size: 15px;
     }
-
     p:nth-child(3){
       font-style: italic;
       font-size: 15px;
@@ -96,45 +109,56 @@
 
   .gallery {
     margin-top: 110px;
-    width: 700px;
-
     .gallery-row {
       display: flex;
       justify-content: space-around;
       margin-top: 10px;
     }
-
     .box {
       height: 180px;
-      width: 220px;
+      width: 190px;
       border-radius: 5%;
+      text-align: center;
+      i {
+        color: white;
+        font-size: 40px;
+        margin: 70px 0;
+        cursor: pointer;
+        display: none;
+      }
     }
 
+    .box:hover > i {
+      display: inline-block;
+
+      transition-timing-function: ease-in;
+      transition-property: display;
+      transition-duration: 0.25s;
+    }
+
+    i:hover {
+      color: rgb(202, 69, 69);
+    }
     .g1 {
       background-image: url(../../images/homepage/pizza-4.jpg);
       background-size: cover;
     }
-
     .g2{
       background-image: url(../../images/homepage/pizza-5.jpg);
       background-size: cover;
     }
-
     .g3{
       background-image: url(../../images/homepage/pizza-6.jpg);
       background-size: cover;
     }
-
     .g4{
       background-image: url(../../images/homepage/pizza-7.jpg);
       background-size: cover;
     }
-
     .g5{
       background-image: url(../../images/homepage/pizza-8.jpg);
       background-size: cover;
     }
-
     .g6{
       background-image: url(../../images/homepage/pizza-9.jpg);
       background-size: cover;

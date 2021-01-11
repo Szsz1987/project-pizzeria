@@ -1,4 +1,4 @@
-import BaseWidget from '../Components/baseWidget.js';
+import BaseWidget from '../Components/BaseWidget.js';
 import utils from '../utils.js';
 import {select, settings} from '../settings.js';
 
@@ -9,7 +9,6 @@ class DatePicker extends BaseWidget{ // DatePicker is a class derived from BaseW
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.datePicker.input);
     thisWidget.initPlugin();
   }
-
   initPlugin(){
     const thisWidget = this;
     thisWidget.minDate = new Date();
@@ -32,17 +31,13 @@ class DatePicker extends BaseWidget{ // DatePicker is a class derived from BaseW
       },
     });
   }
-
   parseValue(value){
     return value;
   }
-
   isValid(){
     return true;
   }
-
   renderValue(){
   }
 }
-
 export default DatePicker;
